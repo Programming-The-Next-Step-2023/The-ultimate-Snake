@@ -1,13 +1,13 @@
 import unittest
 import turtle
-# local imports
-import sys
-sys.path.append(r"\Users\pia.koch\Documents\GitHub\My-App\The-ultimate-Snake")
 
-from ..My_Snake_lib import game
-from ..My_Snake_lib.game import up
+import __main__
+from __main__ import up
+''''
+ImportError: cannot import name 'up' from '__main__'
+'''
 
-obj = game.snake
+obj = __main__.snake
 
 
 # create test cases
@@ -33,5 +33,5 @@ if __name__ == '__main__':
     unittest.main()
 '''
 to run, put this command in the terminal (and make sure you're in the test folder):
-python -m unittest test_snake.py
+python -m unittest test_game.py
 '''
