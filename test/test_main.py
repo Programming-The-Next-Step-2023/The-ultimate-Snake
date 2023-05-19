@@ -1,10 +1,13 @@
 import unittest
 import turtle
+# local imports
+import sys
+sys.path.append(r"\Users\pia.koch\Documents\GitHub\My-App\The-ultimate-Snake")
 
-from ..My_Snake_lib import main
-from ..My_Snake_lib.main import up
+from ..My_Snake_lib import game
+from ..My_Snake_lib.game import up
 
-obj = main.snake
+obj = game.snake
 
 
 # create test cases
