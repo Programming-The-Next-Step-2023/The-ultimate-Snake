@@ -1,13 +1,13 @@
 import unittest
 import turtle
 
-import __main__
-from __main__ import up
+from My_Snake_lib import game
+from game import up
 ''''
-ImportError: cannot import name 'up' from '__main__'
+ImportError: cannot import name 'up' from 'My_Snake_lib'
 '''
 
-obj = __main__.snake
+obj = game.snake
 
 
 # create test cases
@@ -25,7 +25,7 @@ class Testmoves(unittest.TestCase):
         self.assertNotEqual(obj.setheading(),90)
 
 '''
-tests that if the snake is heading is not downwards (270), snake heading can go upwards (90)
+tests that if the snake is not heading downwards (270), snake heading can go upwards (90)
 when the Up-button is pressed on the keyboard, but cannot if heading is downwards.
 '''
 
