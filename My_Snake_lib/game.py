@@ -2,6 +2,7 @@
 import turtle
 import time
 import random 
+from PIL import Image
 
 ### Create the screen
 screen = turtle.Screen()
@@ -44,16 +45,23 @@ snake.penup()
 snake.goto(0,0)
 snake.direction = 'stop'
 
+# Register the image as a shape
+sponge_b = "My_Snake_lib\Sponge1.gif"  # Replace with your image file name
+# Resize the image
+width, height = 30, 30  # Replace with your desired dimensions
+sponge1 = Image.open(sponge_b)
+resized_sponge1 = sponge1.resize((width, height))
+resized_sponge1_path = "My_Snake_lib\small_Sponge_white.gif"  # Replace with the desired output file path
+resized_sponge1.save(resized_sponge1_path)
+screen.register_shape(resized_sponge1_path)
 
 # create the food
 food = turtle.Turtle()
 food.speed(0)
-# pro: add random seafood pictures for turtle
-food.shape("square")
-food.color("white")
+food.shape(resized_sponge1_path)
 food.penup()
 # pro: random start position
-food.goto(60,60)
+food.goto(50,50)
 
 # score
 scoring = turtle.Turtle()
@@ -85,7 +93,7 @@ def right():
     if snake.heading() != 180:
         snake.setheading(0)
 
-up()
+    
 # call the screen to 'listen' to the keyboard
 screen.listen()
 screen.onkey(up, 'Up')
@@ -94,18 +102,31 @@ screen.onkey(left, 'Left')
 screen.onkey(right, 'Right')
 
 
+
+
+
 # main loop
 while True:
     screen.update()
 
+    # snake and food collision
+    if snake.distance(food) < 20:
+        x = random.randint(-260, 260)
+        y = random.randint(-240, 240)
+        food.goto(x, y)
+        scoring.clear()
+        score += 1
+        scoring.write("Score: {}".format(score), align="center", font=("Courier", 24,"bold"))
+        delay -= 0.005 # no endless reduction in delays / with new turtle delay increases again 
+
     # snake & border collision
-    if snake.xcor() > 280 or snake.xcor() < -300 or snake.ycor() > 240 or snake.ycor() < -240:
+    if snake.xcor() > 280 or snake.xcor() < -280 or snake.ycor() > 230 or snake.ycor() < -230:
         time.sleep(1)
         screen.clear()
         screen.bgcolor("blue")
         scoring.goto(0,0)
         scoring.write("   Game Over \n Your Score is {}".format(score),align="center", font=("Courier", 30,"bold"))
-    snake.forward(4)
+    snake.forward(8)
 
     time.sleep(delay)
 
