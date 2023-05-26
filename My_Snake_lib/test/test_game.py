@@ -1,13 +1,10 @@
 import unittest
-import turtle
 
-from My_Snake_lib import game
-from game import up
-''''
-ImportError: cannot import name 'up' from 'My_Snake_lib'
-'''
 
-obj = game.snake
+import My_Snake_lib.game as g
+from My_Snake_lib.game import up
+
+### ModuleNotFoundError: No module named 'My_Snake_lib.game
 
 
 # create test cases
@@ -16,18 +13,18 @@ class Testmoves(unittest.TestCase):
     
     # Test 1: snake.heading() != 270
     def test_up(self):
-        obj.setheading(0)
+        '''
+        Function that takes no arguments. It tests that the snake cannot head upwards when it is currently heading downwards. 
+        '''
+        g.snake.setheading(0)
         up()
-        self.assertEqual(obj.setheading(), 90)
+        self.assertEqual(g.snake.setheading(), 90)
         # Test2: snake.heading() == 270
-        obj.setheading(270)
+        g.snake.setheading(270)
         up()
-        self.assertNotEqual(obj.setheading(),90)
+        self.assertNotEqual(g.snake.setheading(),90)
 
-'''
-tests that if the snake is not heading downwards (270), snake heading can go upwards (90)
-when the Up-button is pressed on the keyboard, but cannot if heading is downwards.
-'''
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -35,3 +32,4 @@ if __name__ == '__main__':
 to run, put this command in the terminal (and make sure you're in the test folder):
 python -m unittest test_game.py
 '''
+### ImportError: Failed to import test module: test_game
