@@ -112,7 +112,7 @@ while True:
     # snake and food collision
     if snake.distance(food) < 20:
         x = random.randint(-260, 260)
-        y = random.randint(-240, 240)
+        y = random.randint(-230, 230)
         food.goto(x, y)
         scoring.clear()
         score += 1
