@@ -39,7 +39,7 @@ delay = 0.1
 snake = turtle.Turtle()
 snake.speed()
 snake.color("green", "red")
-snake.shape("turtle") # different to vid
+snake.shape("turtle") 
 snake.shapesize(2,2,2)
 snake.penup()
 snake.goto(0,0)
@@ -60,10 +60,26 @@ food = turtle.Turtle()
 food.speed(0)
 food.shape(resized_sponge1_path)
 food.penup()
-# pro: random start position
-food.goto(50,50)
+food.goto(-50,50)
+food.hideturtle()
 
-# score
+# create the mating turtle
+mate = turtle.Turtle()
+mate.speed(0)
+mate.shape("turtle")
+mate.color("yellow", "blue")
+mate.shapesize(2,2,2)
+mate.penup()
+mate.goto(-100,50)
+mate.hideturtle()
+
+
+# Variables
+food_types = [food, mate] # list with both food and mate
+current_food = random.choice(food_types)  # randomly select the between food and mate
+current_food.showturtle()
+
+# Score
 scoring = turtle.Turtle()
 scoring.speed(0)
 scoring.color("white")
@@ -72,7 +88,6 @@ scoring.hideturtle()
 scoring.goto(0,300)
 scoring.write("Score: ", align="center", font=("Courier", 24,"bold"))
 
-### pro: create class for second player
 
 def up():
     '''
@@ -103,21 +118,30 @@ screen.onkey(right, 'Right')
 
 
 
-
-
 # main loop
 while True:
     screen.update()
 
-    # snake and food collision
-    if snake.distance(food) < 20:
+    # snake and food/mate collision
+    if snake.distance(current_food) < 20:
         x = random.randint(-260, 260)
         y = random.randint(-230, 230)
-        food.goto(x, y)
-        scoring.clear()
-        score += 1
-        scoring.write("Score: {}".format(score), align="center", font=("Courier", 24,"bold"))
-        delay -= 0.005 # no endless reduction in delays / with new turtle delay increases again 
+        
+        if current_food == food:
+            scoring.clear()
+            score += 1
+            scoring.write("Score: {}".format(score), align="center", font=("Courier", 24,"bold"))
+            delay -= 0.005 # no endless reduction in delays / with new turtle delay increases again 
+
+        elif current_food == mate:
+            delay += 0.005
+        
+        current_food.hideturtle()  # Hide the current food
+        current_food = random.choice(food_types)  # Randomly select a new food type
+        current_food.goto(x, y)  # Set the new position for the current food
+        current_food.showturtle()
+
+
 
     # snake & border collision
     if snake.xcor() > 280 or snake.xcor() < -280 or snake.ycor() > 230 or snake.ycor() < -230:
