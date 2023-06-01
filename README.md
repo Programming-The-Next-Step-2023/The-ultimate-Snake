@@ -1,4 +1,9 @@
 # The-ultimate-Snake
+<<<<<<< week3
+Check out My_Snake_lib package. 
+In there you find a game.py file. This is THE GAME. 
+Enjoy:)
+=======
 This is my second try
 
 This is going to be THE ultimate snake game. 
@@ -14,3 +19,4 @@ How to get started: ... First, I need to get started
 Where to get help: ...remember, Google is your friend
 
 Who are the contributers: Pia Koch (so far)
+>>>>>>> main
