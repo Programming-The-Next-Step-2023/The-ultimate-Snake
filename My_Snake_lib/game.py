@@ -207,6 +207,7 @@ while True:
         screen.bgcolor("blue")
         scoring.goto(0,0)
         scoring.write("   Game Over \n Your Score is {}".format(score),align="center", font=("Courier", 30,"bold"))
+        break
     snake.forward(8)
 
     #check for collision with body
@@ -217,7 +218,8 @@ while True:
             screen.bgcolor("blue")
             scoring.goto(0,0)
             scoring.write("   Game Over \n Your Score is {}".format(score),align="center", font=("Courier", 30,"bold"))
-    
+            break
+
     time.sleep(delay)
 
-turtle.Terminator()
+screen.exitonclick()
