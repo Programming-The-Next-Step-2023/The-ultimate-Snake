@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name = "The ultimate Snake",
+    name = "My_Snake_lib",
     version = "0.0.1",
     author = "pia",
     author_email = "pia.koch@student.uva.nl",
