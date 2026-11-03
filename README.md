@@ -5,4 +5,4 @@ Project description: This is a version of the game Snake, based on the same prin
 
 What the game does: It has a turtle on a screen that can be moved using the arrow bars and wants to eat jellyfish and other little underwater creatures. If you help feed the turtle, it will give birth to baby turtles.
 
-Who are the contributers: Pia Koch
+Contributer: Pia Koch
