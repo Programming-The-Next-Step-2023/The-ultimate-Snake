@@ -1,7 +1,5 @@
 # The-ultimate-Snake
-Check out My_Snake_lib package in the game.py file. 
-
-=======
+Check out "Turtle", the offspring of the all time classic Snake game. In My_Snake_lib package/game.py you will find the game. Have a go! 
 
 Project description: This is a version of the game Snake, based on the same principles and following the same rules. Instead of a growing snake however, we play with a turtle and its offspring.
 
